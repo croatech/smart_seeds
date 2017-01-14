@@ -1,0 +1,3 @@
+module Autoseed
+  # Your code goes here...
+end
