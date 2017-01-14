@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  binary_data: 
+  boolean_data: false
+  date_data: 2017-01-15
+  datetime_data: 2017-01-15 00:55:48
+  decimal_data: 9.99
+  float_data: 1.5
+  integer_data: 1
+  string_data: MyString
+  text_data: MyText
+  time_data: 2017-01-15 00:55:48
+
+two:
+  binary_data: 
+  boolean_data: false
+  date_data: 2017-01-15
+  datetime_data: 2017-01-15 00:55:48
+  decimal_data: 9.99
+  float_data: 1.5
+  integer_data: 1
+  string_data: MyString
+  text_data: MyText
+  time_data: 2017-01-15 00:55:48

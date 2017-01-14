@@ -9,9 +9,9 @@ Gem::Specification.new do |s|
   s.version     = Autoseed::VERSION
   s.authors     = ["Vitaliy Fry"]
   s.email       = ["vitaliy.fry@gmail.com"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of Autoseed."
-  s.description = "TODO: Description of Autoseed."
+  s.homepage    = "http://"
+  s.summary     = "Summary of Autoseed."
+  s.description = "Description of Autoseed."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
