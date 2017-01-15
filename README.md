@@ -1,6 +1,6 @@
 # SmartSeeds
 Gem for auto-smart generating the seeds in Rails app. 
-That defines type of each column in a model and generates random values for these fields. 
+It defines type of each column in a model and generates random values for these fields. 
 
 ## Usage
 
@@ -58,3 +58,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## To do
 - [ ] Solve a problem with enum(now need to override value manually if model has enums)
+- [ ] Supports foreign_keys
