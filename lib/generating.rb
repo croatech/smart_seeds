@@ -20,7 +20,7 @@ module Generating
     when :boolean
       [true, false].sample
     when :date
-      DateTime.now
+      DateTime.now.to_date
     when :datetime
       DateTime.now
     when :decimal
@@ -34,9 +34,7 @@ module Generating
     when :text
       'BIG text'
     when :time
-      Time.now
-    else
-      raise ArgumentError
+      DateTime.now.to_time
     end
   end
 end
