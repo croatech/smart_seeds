@@ -52,6 +52,11 @@ class GeneratingTest < ActiveSupport::TestCase
     assert_instance_of String, value
   end
 
+  test 'should generate text type' do
+    value = Generating.generate_value(:text)
+    assert_instance_of String, value
+  end
+
   test 'should generate time type' do
     value = Generating.generate_value(:time)
     assert_instance_of Time, value
