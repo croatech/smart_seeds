@@ -1,7 +1,7 @@
 require_relative 'generating'
 require_relative 'performing'
 
-module Autoseed
+module SmartSeeds
   def self.call(model, attrs={})
     perform = Performing.new(model, attrs)
     perform.call

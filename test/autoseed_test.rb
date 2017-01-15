@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class Autoseed::Test < ActiveSupport::TestCase
+class SmartSeeds::Test < ActiveSupport::TestCase
   test "truth" do
-    assert_kind_of Module, Autoseed
+    assert_kind_of Module, SmartSeeds
   end
 end

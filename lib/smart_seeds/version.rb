@@ -1,3 +1,3 @@
-module Autoseed
+module SmartSeeds
   VERSION = '0.1.0'
 end

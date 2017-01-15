@@ -1,4 +1,4 @@
-# Autoseed
+# SmartSeeds
 Short description and motivation.
 
 ## Usage
@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'autoseed'
+gem 'smart_seeds'
 ```
 
 And then execute:
@@ -18,7 +18,7 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install autoseed
+$ gem install smart_seeds
 ```
 
 ## Contributing

@@ -1,12 +1,12 @@
 $:.push File.expand_path("../lib", __FILE__)
 
 # Maintain your gem's version:
-require "autoseed/version"
+require "smart_seeds/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
-  s.name        = "autoseed"
-  s.version     = Autoseed::VERSION
+  s.name        = "smart_seeds"
+  s.version     = SmartSeeds::VERSION
   s.authors     = ["Vitaliy Fry"]
   s.email       = ["vitaliy.fry@gmail.com"]
   s.homepage    = "http://frylock.me"

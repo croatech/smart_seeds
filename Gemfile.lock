@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    autoseed (0.1.0)
+    smart_seeds (0.1.0)
       rails (~> 5.0.1)
 
 GEM
@@ -112,8 +112,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoseed!
   byebug
+  smart_seeds!
   sqlite3
 
 BUNDLED WITH

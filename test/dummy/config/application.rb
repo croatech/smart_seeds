@@ -3,7 +3,7 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require "autoseed"
+require "smart_seeds"
 
 module Dummy
   class Application < Rails::Application
