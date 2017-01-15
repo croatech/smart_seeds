@@ -1,5 +1,6 @@
 module Generating
-  AVAILABLE_TYPES = %i(binary
+  AVAILABLE_TYPES = %i(
+                       binary
                        boolean
                        date
                        datetime
@@ -9,7 +10,7 @@ module Generating
                        string
                        text
                        time
-                     )
+                      )
 
   def self.generate_value(column_type)
     raise ArgumentError, "There is no column type #{column_type}" unless Generating::AVAILABLE_TYPES.include?(column_type)

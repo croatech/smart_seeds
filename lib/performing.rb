@@ -1,32 +1,38 @@
 class Performing
-  def initialize(model)
-    @ignored_attrs = %w(id created_at updated_at)
+  def initialize(model, attrs)
+    @attrs = attrs
     @model = model
     @object = model.new
   end
 
   def call
-    model.columns.each do |column|
-      column_name = column.name
-      column_type = column.type
-
-      next if is_column_must_be_skipped?(column_name)
-
-      object[column_name] = generate_value(column_type)
-    end
+    set_default_values
+    set_custom_values if attrs.any?
 
     object.save!
   end
 
   private
 
-  attr_reader :ignored_attrs
+  attr_reader :attrs
   attr_reader :model
   attr_reader :object
 
-  def is_column_must_be_skipped?(column_name)
-    #byebug
-    ignored_attrs.include? column_name
+  def set_default_values
+    model.columns.each do |column|
+      column_name = column.name
+      column_type = column.type
+
+      object[column_name] = generate_value(column_type)
+    end
+  end
+
+  def set_custom_values
+    attrs.each do |attr|
+      key = attr.first
+      value = attr.last
+      object[key.to_s] = value
+    end
   end
 
   def generate_value(column_type)
