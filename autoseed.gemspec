@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Autoseed::VERSION
   s.authors     = ["Vitaliy Fry"]
   s.email       = ["vitaliy.fry@gmail.com"]
-  s.homepage    = "http://"
+  s.homepage    = "http://frylock.me"
   s.summary     = "Summary of Autoseed."
   s.description = "Description of Autoseed."
   s.license     = "MIT"
