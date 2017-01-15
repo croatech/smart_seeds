@@ -31,9 +31,9 @@ module Generating
     when :integer
       rand(1...666)
     when :string
-      'Heil'
+      Faker::Lorem.word
     when :text
-      'BIG text'
+      Faker::Lorem.paragraph
     when :time
       DateTime.now.to_time
     end
