@@ -1,16 +1,8 @@
 class Performing
-  ignored_attrs = %w(id created_at updated_at)
-  attr_reader :ignored_attrs
-
-  attr_reader :model
-  attr_reader :object
-  #attr_reader :acessible_attrs
-
   def initialize(model)
+    @ignored_attrs = %w(id created_at updated_at)
     @model = model
     @object = model.new
-    #@acessible_attrs = model.columns.map(&:name) - ignored_attrs
-
   end
 
   def call
@@ -18,15 +10,22 @@ class Performing
       column_name = column.name
       column_type = column.type
 
-      next if is_column_should_be_skipped?(column_name)
+      next if is_column_must_be_skipped?(column_name)
 
       object[column_name] = generate_value(column_type)
     end
+
+    object.save!
   end
 
   private
 
-  def is_column_should_be_skipped?(column_name)
+  attr_reader :ignored_attrs
+  attr_reader :model
+  attr_reader :object
+
+  def is_column_must_be_skipped?(column_name)
+    #byebug
     ignored_attrs.include? column_name
   end
 

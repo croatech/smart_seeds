@@ -2,7 +2,7 @@ require_relative 'generating'
 require_relative 'performing'
 
 module Autoseed
-  def auto_seed(model)
+  def self.call(model)
     perform = Performing.new(model)
     perform.call
   end
