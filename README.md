@@ -25,7 +25,7 @@ And we've got an object in a database:
 ### Override default values
 If you want to override some default values, you can send it as a hash:
 
-```apple js
+```
 > SmartSeeds.(Entity, {name: 'Aleah'})
    (0.1ms)  begin transaction
   SQL (0.4ms)  INSERT INTO "entities" ("id", "name", "age", "is_human", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["id", 167], ["name", "Aleah"], ["age", 374], ["is_human", false], ["created_at", 2017-01-15 16:15:15 UTC], ["updated_at", 2017-01-15 16:15:15 UTC]]
