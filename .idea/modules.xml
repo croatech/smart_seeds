@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/autoseed.iml" filepath="$PROJECT_DIR$/.idea/autoseed.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smart_seeds.iml" filepath="$PROJECT_DIR$/.idea/smart_seeds.iml" />
     </modules>
   </component>
 </project>

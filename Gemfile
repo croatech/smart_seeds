@@ -14,4 +14,6 @@ gemspec
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl'
+  gem 'faker'
+  gem 'annotate', git: 'https://github.com/ctran/annotate_models.git'
 end
