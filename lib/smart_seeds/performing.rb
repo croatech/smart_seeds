@@ -16,6 +16,7 @@ module SmartSeeds
       set_custom_values if attrs.any?
 
       object.save!
+      object
     end
 
     private
