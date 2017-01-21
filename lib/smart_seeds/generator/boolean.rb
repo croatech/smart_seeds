@@ -2,7 +2,7 @@ module SmartSeeds
   module Generator
     class Boolean < SmartSeeds::Generator::Base
 
-      def initialize(column_type)
+      def initialize(column, model)
         super
       end
 

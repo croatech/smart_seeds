@@ -24,10 +24,7 @@ module SmartSeeds
 
     def set_default_values
       model.columns.each do |column|
-        column_name = column.name
-        column_type = column.type
-
-        object[column_name] = generate_value(column_type)
+        object[column.name] = generate_value(column)
       end
     end
 
@@ -39,8 +36,8 @@ module SmartSeeds
       end
     end
 
-    def generate_value(column_type)
-      SmartSeeds::Generator::Base.new(column_type).generate_value
+    def generate_value(column)
+      SmartSeeds::Generator::Base.new(column, model).generate_value
     end
   end
 end

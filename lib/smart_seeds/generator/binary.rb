@@ -2,7 +2,7 @@ module SmartSeeds
   module Generator
     class Binary < SmartSeeds::Generator::Base
 
-      def initialize(column_type)
+      def initialize(column, model)
         super
       end
 

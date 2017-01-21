@@ -1,8 +1,7 @@
 module SmartSeeds
   module Generator
     class Base
-      attr_reader :column_type
-
+      # Available types of AR model(:binary, :boolean, etc.)
       AVAILABLE_TYPES = %i(
                            binary
                            boolean
@@ -16,16 +15,23 @@ module SmartSeeds
                            time
                           )
 
-      def initialize(column_type)
-        @column_type = column_type
+      def initialize(column, model)
+        @column = column
+        @model = model
       end
 
       def generate_value
-        raise ArgumentError, "There is no column type #{column_type}" unless SmartSeeds::Generator::Base::AVAILABLE_TYPES.include?(column_type)
-
-        klass = "SmartSeeds::Generator::#{column_type.to_s.capitalize}".constantize
-        klass.new(column_type).generate_value
+        begin
+          klass = "SmartSeeds::Generator::#{column.type.to_s.capitalize}".constantize
+          klass.new(column, model).generate_value
+        rescue Exception => e
+          puts e.inspect
+        end
       end
+
+      protected
+
+      attr_reader :column, :model
     end
   end
 end
