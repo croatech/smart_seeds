@@ -17,10 +17,6 @@
 require 'test_helper'
 
 class EntityTest < ActiveSupport::TestCase
-  def setup
-    #@entity = entites(:one)
-  end
-
   test 'after seeding model shouldnt has fields with nil' do
     SmartSeeds.(Entity)
     entity = Entity.last

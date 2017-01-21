@@ -23,28 +23,8 @@ module SmartSeeds
       def generate_value
         raise ArgumentError, "There is no column type #{column_type}" unless SmartSeeds::Generator::Base::AVAILABLE_TYPES.include?(column_type)
 
-        case column_type
-          when :binary
-            '0b100'
-          when :boolean
-            [true, false].sample
-          when :date
-            DateTime.now.to_date
-          when :datetime
-            DateTime.now
-          when :decimal
-            rand(6.6...666.0).round(2)
-          when :float
-            rand(6.6...666.0).round(2)
-          when :integer
-            rand(1...666)
-          when :string
-            Faker::Lorem.word
-          when :text
-            Faker::Lorem.paragraph
-          when :time
-            DateTime.now.to_time
-        end
+        klass = "SmartSeeds::Generator::#{column_type.to_s.capitalize}".constantize
+        klass.new(column_type).generate_value
       end
     end
   end
