@@ -1,6 +1,7 @@
 class CreateEntities < ActiveRecord::Migration[5.0]
   def change
     create_table :entities do |t|
+      t.integer :status, default: 0
       t.binary :binary_data
       t.boolean :boolean_data
       t.date :date_data

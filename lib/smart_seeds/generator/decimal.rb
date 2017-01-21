@@ -7,7 +7,7 @@ module SmartSeeds
       end
 
       def generate_value
-        rand(6.6...666.0).round(2)
+        rand(6.6...6666.0).round(2)
       end
     end
   end

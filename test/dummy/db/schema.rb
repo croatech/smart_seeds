@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170114215548) do
+ActiveRecord::Schema.define(version: 20170121232412) do
 
   create_table "entities", force: :cascade do |t|
     t.binary   "binary_data"
@@ -23,8 +23,9 @@ ActiveRecord::Schema.define(version: 20170114215548) do
     t.string   "string_data"
     t.text     "text_data"
     t.time     "time_data"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "status",        default: 0
   end
 
 end

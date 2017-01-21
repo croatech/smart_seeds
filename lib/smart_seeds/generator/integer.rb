@@ -7,7 +7,21 @@ module SmartSeeds
       end
 
       def generate_value
-        rand(1..666)
+        if is_enum?
+          generate_enum
+        else
+          rand(1..66666)
+        end
+      end
+
+      private
+
+      def is_enum?
+        SmartSeeds::Generator::Enum.new(column, model).is_enum?
+      end
+
+      def generate_enum
+        SmartSeeds::Generator::Enum.new(column, model).generate_value
       end
     end
   end
