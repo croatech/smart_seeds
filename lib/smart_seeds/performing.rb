@@ -1,5 +1,7 @@
 module SmartSeeds
   class Performing
+    SKIPPABLE_COLUMN_NAMES = %w(id created_at updated_at)
+
     def initialize(model, attrs)
       @attrs = attrs
       @model = model
@@ -24,6 +26,7 @@ module SmartSeeds
 
     def set_default_values
       model.columns.each do |column|
+        next if is_column_must_be_skipped?(column.name)
         object[column.name] = generate_value(column)
       end
     end
@@ -38,6 +41,10 @@ module SmartSeeds
 
     def generate_value(column)
       SmartSeeds::Generator::Base.new(column, model).generate_value
+    end
+
+    def is_column_must_be_skipped?(column_name)
+      SmartSeeds::Performing::SKIPPABLE_COLUMN_NAMES.include?(column_name)
     end
   end
 end
