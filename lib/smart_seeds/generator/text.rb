@@ -7,7 +7,7 @@ module SmartSeeds
       end
 
       def generate_value
-        Faker::Lorem.paragraph
+        ::Faker::Lorem.paragraph
       end
     end
   end
