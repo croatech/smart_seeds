@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class GeneratorTest < ActiveSupport::TestCase
+class EnumTest < ActiveSupport::TestCase
   setup do
     @enums_values = Entity.defined_enums['status'].keys
   end

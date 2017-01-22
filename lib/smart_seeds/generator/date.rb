@@ -1,5 +1,3 @@
-require 'date'
-
 module SmartSeeds
   module Generator
     class Date < SmartSeeds::Generator::Base

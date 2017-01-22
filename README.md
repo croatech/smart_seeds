@@ -60,5 +60,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## To do
 - [x] Solve a problem with enum(now need to override value manually if model has enums)
-- [ ] Supports foreign_keys
+- [x] Supports foreign_keys
 - [ ] Skip id, created_at, updated_at

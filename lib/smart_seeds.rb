@@ -11,6 +11,7 @@ require 'smart_seeds/generator/string'
 require 'smart_seeds/generator/text'
 require 'smart_seeds/generator/time'
 require 'smart_seeds/generator/integer/enum'
+require 'smart_seeds/generator/integer/foreign_key'
 
 module SmartSeeds
   def self.plant(model, attrs={})
