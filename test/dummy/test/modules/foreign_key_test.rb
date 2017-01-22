@@ -11,8 +11,8 @@ class ForeignKeyTest < ActiveSupport::TestCase
     SmartSeeds.plant(Entity)
     SmartSeeds.plant(Entity)
     SmartSeeds.plant(Entity)
-    entites_ids = Entity.ids
+    entities_ids = Entity.ids
     category = SmartSeeds.plant(Category)
-    assert_includes entites_ids, category.entity_id
+    assert_includes entities_ids, category.entity_id
   end
 end
