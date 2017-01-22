@@ -6,7 +6,12 @@ class GeneratorTest < ActiveSupport::TestCase
   end
 
   test 'should be default value in enum field' do
-    entity = SmartSeeds.(Entity)
-    assert_includes(@enums_values, entity.status)
+    entity = SmartSeeds.plant(Entity)
+    assert_includes @enums_values, entity.status
+  end
+
+  test 'custom values for enum' do
+    entity = SmartSeeds.plant(Entity, {status: 'in_progress'})
+    assert_equal entity.status, 'in_progress'
   end
 end

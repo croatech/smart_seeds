@@ -82,34 +82,34 @@ class GeneratorTest < ActiveSupport::TestCase
 
   test 'id name must be skipped by default and not generated' do
     # difference between of ids of two continuously created objects must be equal 1
-    entity = SmartSeeds.(Entity)
+    entity = SmartSeeds.plant(Entity)
     assert_equal entity.id, 1
   end
 
   test 'id must be generated if client sends a custom value in the hash' do
-    entity_1 = SmartSeeds.(Entity, {id: 666})
+    entity_1 = SmartSeeds.plant(Entity, {id: 666})
     assert_equal entity_1.id, 666
   end
 
   test 'created_at name must be skipped by default and generated current date' do
     # difference between of ids of two continuously created objects must be equal 1
-    entity = SmartSeeds.(Entity)
+    entity = SmartSeeds.plant(Entity)
     assert_equal entity.created_at.to_i, DateTime.now.to_i
   end
 
   test 'created_at must be generated if client sends a custom value in the hash' do
-    entity = SmartSeeds.(Entity, {created_at: DateTime.tomorrow})
+    entity = SmartSeeds.plant(Entity, {created_at: DateTime.tomorrow})
     assert_equal entity.created_at, DateTime.tomorrow
   end
 
   test 'updated_at name must be skipped by default and generated current date' do
     # difference between of ids of two continuously created objects must be equal 1
-    entity = SmartSeeds.(Entity)
+    entity = SmartSeeds.plant(Entity)
     assert_equal entity.updated_at.to_i, DateTime.now.to_i
   end
 
   test 'updated_at must be generated if client sends a custom value in the hash' do
-    entity = SmartSeeds.(Entity, {updated_at: DateTime.tomorrow})
+    entity = SmartSeeds.plant(Entity, {updated_at: DateTime.tomorrow})
     assert_equal entity.updated_at, DateTime.tomorrow
   end
 end

@@ -13,7 +13,7 @@ require 'smart_seeds/generator/time'
 require 'smart_seeds/generator/integer/enum'
 
 module SmartSeeds
-  def self.call(model, attrs={})
+  def self.plant(model, attrs={})
     perform = SmartSeeds::Performing.new(model, attrs)
     perform.call
   end
