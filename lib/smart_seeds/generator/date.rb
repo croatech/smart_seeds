@@ -7,7 +7,7 @@ module SmartSeeds
       end
 
       def generate_value
-        ::DateTime.now.to_date
+        DateTime.now.to_date
       end
     end
   end
