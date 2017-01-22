@@ -11,7 +11,11 @@ module SmartSeeds
 
       # Get class name of specific generator and execute generate value method
       def generate_value
+        try_to_generate_via_faker
+
         begin
+          try_to_generate_via_faker
+        rescue NotCompatibleWithFaker
           klass = "SmartSeeds::Generator::#{column.type.to_s.capitalize}".constantize
           klass.new(column, model).generate_value
         rescue Exception => e
@@ -22,6 +26,10 @@ module SmartSeeds
       protected
 
       attr_reader :column, :model
+
+      def try_to_generate_via_faker
+
+      end
     end
   end
 end

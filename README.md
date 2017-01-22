@@ -2,7 +2,7 @@
 Gem for auto-smart generating the seeds in Rails app. 
 It defines type of each column in a model and generates random values for these fields. 
 
-Also it supports enums.
+Also it supports enums and foreign keys.
 
 ## Usage
 
