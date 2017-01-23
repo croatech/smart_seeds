@@ -1,3 +1,5 @@
+require 'faker'
+
 module SmartSeeds
   module Generator
     class Faker < SmartSeeds::Generator::Base

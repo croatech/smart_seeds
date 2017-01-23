@@ -7,7 +7,7 @@ module SmartSeeds
       end
 
       def generate_value
-        [true, false].sample
+        true
       end
     end
   end
