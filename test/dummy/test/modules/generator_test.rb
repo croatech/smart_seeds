@@ -20,6 +20,10 @@ require_relative '../helpers/column_helper'
 class GeneratorTest < ActiveSupport::TestCase
   include ColumnHelper
 
+  setup do
+    SmartSeeds.plant(Category)
+  end
+
   test 'should generate binary type' do
     column = get_column_by_name('binary_data', Entity)
     value = SmartSeeds::Generator::Base.new(column, Entity).generate_value

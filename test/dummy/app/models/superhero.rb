@@ -1,2 +1,1 @@
-class Superhero < ApplicationRecord
-end
+class Superhero < ApplicationRecord; end

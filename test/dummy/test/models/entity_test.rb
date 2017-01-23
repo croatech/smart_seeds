@@ -17,6 +17,10 @@
 require 'test_helper'
 
 class EntityTest < ActiveSupport::TestCase
+  setup do
+    SmartSeeds.plant(Category)
+  end
+
   test 'after seeding model shouldnt has fields with nil' do
     entity = SmartSeeds.plant(Entity)
     assert_not_nil entity.binary_data

@@ -3,6 +3,7 @@ require 'test_helper'
 class EnumTest < ActiveSupport::TestCase
   setup do
     @enums_values = Entity.defined_enums['status'].keys
+    SmartSeeds.plant(Category)
   end
 
   test 'should be default value in enum field' do

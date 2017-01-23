@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170122213300) do
+ActiveRecord::Schema.define(version: 20170123203356) do
+
+  create_table "big_categories", force: :cascade do |t|
+    t.string "name"
+  end
 
   create_table "categories", force: :cascade do |t|
-    t.integer  "entity_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["entity_id"], name: "index_categories_on_entity_id"
+    t.string "name"
   end
 
   create_table "entities", force: :cascade do |t|
+    t.integer  "status",          default: 0
     t.binary   "binary_data"
     t.boolean  "boolean_data"
     t.date     "date_data"
@@ -30,16 +32,15 @@ ActiveRecord::Schema.define(version: 20170122213300) do
     t.string   "string_data"
     t.text     "text_data"
     t.time     "time_data"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "status",        default: 0
+    t.integer  "category_id"
+    t.integer  "big_category_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   create_table "superheros", force: :cascade do |t|
-    t.string   "name"
-    t.string   "power"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "power"
   end
 
 end
