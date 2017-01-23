@@ -22,6 +22,7 @@ class GeneratorTest < ActiveSupport::TestCase
 
   setup do
     SmartSeeds.plant(Category)
+    SmartSeeds.plant(BigCategory)
   end
 
   test 'should generate binary type' do
