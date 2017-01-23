@@ -1,5 +1,5 @@
 # SmartSeeds
-Gem for an auto-smart generating the seeds in your Rails app. 
+Gem for auto-smart generating the seeds in your Rails app. 
 It defines types columns in a model and generates random values for each of these fields.
 
 ## Usage
