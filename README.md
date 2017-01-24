@@ -74,3 +74,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## Todo
 -[ ] Process default values (.column_defaults)
+-[ ] Check for wrong custom param
