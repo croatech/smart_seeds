@@ -73,6 +73,12 @@ class GeneratorTest < ActiveSupport::TestCase
     assert_instance_of String, value
   end
 
+  test 'string should be capitalized' do
+    column = get_column_by_name('string_data', Entity)
+    value = SmartSeeds::Generator::Base.new(column, Entity).generate_value
+    assert value.capitalize
+  end
+
   test 'should generate text type' do
     column = get_column_by_name('text_data', Entity)
     value = SmartSeeds::Generator::Base.new(column, Entity).generate_value
