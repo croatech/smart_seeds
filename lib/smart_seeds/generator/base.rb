@@ -7,7 +7,7 @@ module SmartSeeds
       end
 
       def generate_value
-        generate_faker_value if is_comatible_with_faker?
+        raise 'Abstract method'
       end
 
       protected

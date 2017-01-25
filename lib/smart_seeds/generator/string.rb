@@ -7,7 +7,11 @@ module SmartSeeds
       end
 
       def generate_value
-        ::Faker::Lorem.word.capitalize
+        if is_comatible_with_faker?
+          generate_faker_value
+        else
+          ::Faker::Lorem.word.capitalize
+        end
       end
     end
   end

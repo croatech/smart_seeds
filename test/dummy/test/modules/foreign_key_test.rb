@@ -11,6 +11,7 @@ class ForeignKeyTest < ActiveSupport::TestCase
   test 'should be raise an error if there are no records in a table' do
     Category.destroy_all
     BigCategory.destroy_all
+
     assert_raises ActiveRecord::RecordInvalid do
       SmartSeeds.plant(Entity)
     end
