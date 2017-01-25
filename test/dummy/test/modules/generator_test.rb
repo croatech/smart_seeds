@@ -23,83 +23,63 @@ class GeneratorTest < ActiveSupport::TestCase
   setup do
     SmartSeeds.plant(Category)
     SmartSeeds.plant(BigCategory)
+    @entity = SmartSeeds.plant(Entity)
   end
 
   test 'should generate binary type' do
-    column = get_column_by_name('binary_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_equal '0b100', value
+    assert_equal '0b100', @entity.binary_data
   end
 
   test 'should generate boolean type' do
-    column = get_column_by_name('boolean_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_includes [true, false], value
+    assert_includes [true, false], @entity.boolean_data
   end
 
   test 'should generate date type' do
-    column = get_column_by_name('date_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of Date, value
+    assert_instance_of Date, @entity.date_data
   end
 
   test 'should generate datetime type' do
-    column = get_column_by_name('datetime_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of DateTime, value
+    assert_instance_of DateTime, @entity.datetime_data.to_datetime
   end
 
   test 'should generate decimal type' do
-    column = get_column_by_name('decimal_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of Float, value
+    assert_instance_of BigDecimal, @entity.decimal_data
   end
 
   test 'should generate float type' do
-    column = get_column_by_name('float_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of Float, value
+    assert_instance_of Float, @entity.float_data
   end
 
   test 'should generate integer type' do
-    column = get_column_by_name('integer_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of Fixnum, value
+    assert_instance_of Fixnum, @entity.integer_data
   end
 
   test 'should generate string type' do
-    column = get_column_by_name('string_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of String, value
+    assert_instance_of String, @entity.string_data
   end
 
-  test 'string should be capitalized' do
-    column = get_column_by_name('string_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert value.capitalize
+  test 'string data should be capitalized' do
+    assert @entity.string_data.capitalize
   end
 
   test 'should generate text type' do
-    column = get_column_by_name('text_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of String, value
+    assert_instance_of String, @entity.text_data
   end
 
   test 'should generate time type' do
-    column = get_column_by_name('time_data', Entity)
-    value = SmartSeeds::Performing.new(Entity, attrs={}).send(:generate_value, column)
-    assert_instance_of Time, value
+    assert_instance_of Time, @entity.time_data.to_time
   end
 
   test 'id name must be skipped by default and not generated' do
     # difference between of ids of two continuously created objects must be equal 1
+    last_entity = Entity.last
     entity = SmartSeeds.plant(Entity)
-    assert_equal entity.id, 1
+    assert_equal entity.id, last_entity.id + 1
   end
 
   test 'id must be generated if client sends a custom value in the hash' do
-    entity_1 = SmartSeeds.plant(Entity, {id: 666})
-    assert_equal entity_1.id, 666
+    entity = SmartSeeds.plant(Entity, {id: 666})
+    assert_equal entity.id, 666
   end
 
   test 'created_at name must be skipped by default and generated current date' do
