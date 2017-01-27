@@ -56,7 +56,7 @@ For example: Model `Superhero` has `name` and `power` attributes, so the value w
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smart_seeds'
+gem 'smart_seeds', '~> 0.1.6'
 ```
 
 And then execute:
