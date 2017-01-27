@@ -1,14 +1,14 @@
 module SmartSeeds
   class Performing
-    SKIPPABLE_COLUMN_NAMES = %w(id created_at updated_at)
-
     def initialize(model, attrs)
       @attrs = attrs
       @model = model
       @object = model.new
+      @skippable_column_names = %w(id created_at updated_at)
     end
 
     def start
+      add_skippable_attributes
       set_default_values
 
       # User can send custom values in a hash: SmartSeeds.(Entity, {name: 'Aleah'})
@@ -21,7 +21,13 @@ module SmartSeeds
 
     private
 
-    attr_reader :attrs, :model, :object
+    attr_reader :attrs, :model, :object, :skippable_column_names
+
+    def add_skippable_attributes
+      # All default attributes which defined in AR object must be skipped by default
+      keys_with_default_values = model.column_defaults.select{|key, value| value.present? }.keys
+      skippable_column_names.concat(keys_with_default_values)
+    end
 
     def set_default_values
       model.columns.each do |column|
@@ -47,7 +53,7 @@ module SmartSeeds
     end
 
     def is_column_must_be_skipped?(column_name)
-      SmartSeeds::Performing::SKIPPABLE_COLUMN_NAMES.include?(column_name)
+      skippable_column_names.include?(column_name)
     end
   end
 end

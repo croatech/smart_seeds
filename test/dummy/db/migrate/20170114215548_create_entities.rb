@@ -14,6 +14,8 @@ class CreateEntities < ActiveRecord::Migration[5.0]
       t.time :time_data
       t.integer :category_id
       t.integer :big_category_id
+      t.integer :default_integer, default: 1
+      t.boolean :default_boolean, default: true
 
       t.timestamps
     end

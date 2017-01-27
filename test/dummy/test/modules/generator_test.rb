@@ -69,38 +69,4 @@ class GeneratorTest < ActiveSupport::TestCase
   test 'should generate time type' do
     assert_instance_of Time, @entity.time_data.to_time
   end
-
-  test 'id name must be skipped by default and not generated' do
-    # difference between of ids of two continuously created objects must be equal 1
-    last_entity = Entity.last
-    entity = SmartSeeds.plant(Entity)
-    assert_equal entity.id, last_entity.id + 1
-  end
-
-  test 'id must be generated if client sends a custom value in the hash' do
-    entity = SmartSeeds.plant(Entity, {id: 666})
-    assert_equal entity.id, 666
-  end
-
-  test 'created_at name must be skipped by default and generated current date' do
-    # difference between of ids of two continuously created objects must be equal 1
-    entity = SmartSeeds.plant(Entity)
-    assert_equal entity.created_at.to_i, DateTime.now.to_i
-  end
-
-  test 'created_at must be generated if client sends a custom value in the hash' do
-    entity = SmartSeeds.plant(Entity, {created_at: DateTime.tomorrow})
-    assert_equal entity.created_at, DateTime.tomorrow
-  end
-
-  test 'updated_at name must be skipped by default and generated current date' do
-    # difference between of ids of two continuously created objects must be equal 1
-    entity = SmartSeeds.plant(Entity)
-    assert_equal entity.updated_at.to_i, DateTime.now.to_i
-  end
-
-  test 'updated_at must be generated if client sends a custom value in the hash' do
-    entity = SmartSeeds.plant(Entity, {updated_at: DateTime.tomorrow})
-    assert_equal entity.updated_at, DateTime.tomorrow
-  end
 end
