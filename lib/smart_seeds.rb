@@ -16,7 +16,6 @@ require 'smart_seeds/generator/faker'
 
 module SmartSeeds
   def self.plant(model, attrs={})
-    perform = SmartSeeds::Performing.new(model, attrs)
-    perform.call
+    SmartSeeds::Performing.new(model, attrs).start
   end
 end

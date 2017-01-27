@@ -8,7 +8,7 @@ module SmartSeeds
       @object = model.new
     end
 
-    def call
+    def start
       set_default_values
 
       # User can send custom values in a hash: SmartSeeds.(Entity, {name: 'Aleah'})
