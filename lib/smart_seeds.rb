@@ -1,3 +1,4 @@
+require 'faker'
 require 'smart_seeds/performing'
 require 'smart_seeds/generator/base'
 require 'smart_seeds/generator/binary'
