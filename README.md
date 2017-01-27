@@ -34,6 +34,8 @@ If you want to override some default values, you can send it in a hash:
  => true 
 ```
 
+By the way, all attributes which has default values on AR side will be skipped by default.
+
 ### Faker
 The gem has a simple integration with [Faker](https://github.com/stympy/faker).
 
@@ -72,7 +74,3 @@ Contribution directions go here.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
-## Todo
--[ ] Process default values (.column_defaults)
--[ ] Check for wrong custom param

@@ -50,4 +50,10 @@ class DefaultsTest < ActiveSupport::TestCase
     assert_equal entity.default_integer, 6
     assert_equal entity.default_boolean, false
   end
+
+  test 'should raise error if attributes doesnt exist' do
+    assert_raises(ActiveModel::MissingAttributeError) do
+      SmartSeeds.plant(Entity, {unknown_attribute: 'Trees of eternity'})
+    end
+  end
 end

@@ -4,7 +4,7 @@ module SmartSeeds
       @attrs = attrs
       @model = model
       @object = model.new
-      @skippable_column_names = %w(id created_at updated_at)
+      @skippable_attributes = %w(id created_at updated_at)
     end
 
     def start
@@ -21,12 +21,12 @@ module SmartSeeds
 
     private
 
-    attr_reader :attrs, :model, :object, :skippable_column_names
+    attr_reader :attrs, :model, :object, :skippable_attributes
 
     def add_skippable_attributes
-      # All default attributes which defined in AR object must be skipped by default
+      # All default attributes which defined in AR object should be skipped by default
       keys_with_default_values = model.column_defaults.select{|key, value| value.present? }.keys
-      skippable_column_names.concat(keys_with_default_values)
+      skippable_attributes.concat(keys_with_default_values)
     end
 
     def set_default_values
@@ -53,7 +53,7 @@ module SmartSeeds
     end
 
     def is_column_must_be_skipped?(column_name)
-      skippable_column_names.include?(column_name)
+      skippable_attributes.include?(column_name)
     end
   end
 end
