@@ -21,9 +21,7 @@ module SmartSeeds
 
     private
 
-    attr_reader :attrs
-    attr_reader :model
-    attr_reader :object
+    attr_reader :attrs, :model, :object
 
     def set_default_values
       model.columns.each do |column|

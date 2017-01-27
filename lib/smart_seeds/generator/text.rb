@@ -7,7 +7,11 @@ module SmartSeeds
       end
 
       def generate_value
-        ::Faker::Lorem.paragraph
+        if is_comatible_with_faker?
+          generate_faker_value
+        else
+          ::Faker::Lorem.paragraph
+        end
       end
     end
   end
