@@ -9,7 +9,7 @@ GIT
 PATH
   remote: .
   specs:
-    smart_seeds (0.1.4)
+    smart_seeds (0.1.5)
       faker
       rails
 
