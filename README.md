@@ -1,7 +1,9 @@
 # SmartSeeds
-Gem for auto-smart generating the seeds in your ruby app. Compatible only with ActiveRecord. 
+Gem for smart auto generating of the seeds for your ruby app. 
 
-It determines types of fields(attributes) in an AR model and generates random values for each of these attributes.
+It determines types of fields(attributes) of an ActiveRecord model and creates records with random values for each of these attributes.
+
+The gem has simple integration with Faker and supports foreign_keys, enums, etc.
 
 ## Usage
 
@@ -9,29 +11,21 @@ For example `Entity` model has `name`, `age`, `is_human` attributes.
 
 All you need to do is run this command: `SmartSeeds.plant(Entity)`
 ```
-> SmartSeeds.plant(Entity)
+ > SmartSeeds.plant(Entity)
    (0.1ms)  begin transaction
-  SQL (0.4ms)  INSERT INTO "entities" ("id", "name", "age", "is_human", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["id", 369], ["name", "Heil"], ["age", 344], ["is_human", false], ["created_at", 2017-01-15 16:10:50 UTC], ["updated_at", 2017-01-15 16:10:50 UTC]]
-   (1.8ms)  commit transaction
- => true 
-
-```
-And you've got an object in a database:
-```
-> Entity.last
-  Entity Load (0.2ms)  SELECT  "entities".* FROM "entities" ORDER BY "entities"."id" DESC LIMIT ?  [["LIMIT", 1]]
- => #<Entity id: 1, name: "Heil", age: 344, is_human: false, created_at: "2017-01-15 16:10:50", updated_at: "2017-01-15 16:10:50"> 
-
+  SQL (0.5ms)  INSERT INTO "entities" ("name", "age", "is_human", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Numquam"], ["age", 60246], ["is_human", true], ["created_at", 2017-01-30 15:10:00 UTC], ["updated_at", 2017-01-30 15:10:00 UTC]]
+   (0.7ms)  commit transaction
+ => #<Entity id: 1, name: "Numquam", age: 1488, is_human: false, created_at: "2017-01-30 15:10:00", updated_at: "2017-01-30 15:10:00"> 
 ```
 ### Custom values
-If you want to override some default values, you can send it in a hash:
+If you want to override some default random values, you can send them in a hash:
 
 ```
-> SmartSeeds.plant(Entity, {name: 'Aleah'})
-   (0.1ms)  begin transaction
-  SQL (0.4ms)  INSERT INTO "entities" ("id", "name", "age", "is_human", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)  [["id", 167], ["name", "Aleah"], ["age", 374], ["is_human", false], ["created_at", 2017-01-15 16:15:15 UTC], ["updated_at", 2017-01-15 16:15:15 UTC]]
-   (1.6ms)  commit transaction
- => true 
+ > SmartSeeds.plant(Entity, {name: 'Aleah'})
+   (0.7ms)  begin transaction
+  SQL (1.9ms)  INSERT INTO "entities" ("name", "age", "is_human", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Aleah"], ["age", 15166], ["is_human", false], ["created_at", 2017-01-30 15:11:16 UTC], ["updated_at", 2017-01-30 15:11:16 UTC]]
+   (0.7ms)  commit transaction
+ => #<Entity id: 2, name: "Aleah", age: 39, is_human: true, created_at: "2017-01-30 15:11:16", updated_at: "2017-01-30 15:11:16">
 ```
 
 By the way, all attributes which has default values on AR side will be skipped by default.

@@ -18,7 +18,7 @@ module SmartSeeds
       private
 
       def faker_classes_include_model_name?
-        # Check if Faker has a Class which called as a AR Model
+        # Check if Faker has a Class which called as an AR Model
         faker_classes = ::Faker.constants.select {|c| ::Faker.const_get(c).is_a? Class}
         faker_classes.include? model.name.to_sym
       end
