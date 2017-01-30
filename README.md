@@ -1,5 +1,5 @@
 # SmartSeeds
-Gem for smart auto generating of the seeds for your ruby app. 
+Gem for smart auto generating of new records with random values for your ruby app.
 
 It determines types of fields(attributes) of an ActiveRecord model and creates records with random values for each of these attributes.
 
