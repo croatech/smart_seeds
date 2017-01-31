@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Vitaliy Fry"]
   s.email       = ["vitaliy.fry@gmail.com"]
   s.homepage    = "http://frylock.me"
-  s.summary     = "Summary of Autoseed."
-  s.description = "Description of Autoseed."
+  s.summary     = "Gem for smart auto generating of new records with random values for your ruby app."
+  s.description = "It determines types of fields(attributes) of an ActiveRecord model and creates records with random values for each of these attributes."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
