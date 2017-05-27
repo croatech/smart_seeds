@@ -5,8 +5,6 @@ module SmartSeeds
 
       def initialize(column, model)
         super
-        # byebug if column.name == 'category_id'
-        # byebug if column.name == 'category_id'
       end
 
       def generate_value
