@@ -8,12 +8,14 @@ class EnumTest < ActiveSupport::TestCase
   end
 
   test 'should be default value in enum field' do
-    entity = SmartSeeds.plant(Entity)
+    SmartSeeds.plant(Entity)
+    entity = Entity.last
     assert_includes @enums_values, entity.status
   end
 
   test 'custom values for enum' do
-    entity = SmartSeeds.plant(Entity, {status: 'in_progress'})
+    SmartSeeds.plant(Entity, {status: 'in_progress'})
+    entity = Entity.last
     assert_equal entity.status, 'in_progress'
   end
 end

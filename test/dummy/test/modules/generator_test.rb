@@ -23,7 +23,8 @@ class GeneratorTest < ActiveSupport::TestCase
   setup do
     SmartSeeds.plant(Category)
     SmartSeeds.plant(BigCategory)
-    @entity = SmartSeeds.plant(Entity)
+    SmartSeeds.plant(Entity)
+    @entity = Entity.last
   end
 
   test 'should generate binary type' do
