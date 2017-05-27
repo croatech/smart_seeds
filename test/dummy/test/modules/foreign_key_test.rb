@@ -12,9 +12,10 @@ class ForeignKeyTest < ActiveSupport::TestCase
     Category.destroy_all
     BigCategory.destroy_all
 
-    assert_raises ActiveRecord::RecordInvalid do
+    error = assert_raises ActiveRecord::ActiveRecordError do
       SmartSeeds.plant(Entity)
     end
+    assert_match /There are no records in/, error.message
   end
 
   test 'should be set a correctly foreign_key' do
@@ -27,5 +28,11 @@ class ForeignKeyTest < ActiveSupport::TestCase
     big_categories_ids = BigCategory.ids
     entity = SmartSeeds.plant(Entity)
     assert_includes big_categories_ids, entity.big_category_id
+  end
+
+  test 'should be set a correctly foreign_key if it refers to not default class_name' do
+    categories_ids = Category.ids
+    entity = SmartSeeds.plant(Entity)
+    assert_includes categories_ids, entity.custom_category_id
   end
 end

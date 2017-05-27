@@ -3,4 +3,5 @@ class Entity < ApplicationRecord
 
   belongs_to :category
   belongs_to :big_category
+  belongs_to :custom_category, class_name: 'Category', foreign_key: 'custom_category_id'
 end
