@@ -13,7 +13,7 @@ module SmartSeeds
         values_array.sample
       end
 
-      def is_an_enum?
+      def enum?
         model.defined_enums.include?(column.name)
       end
     end

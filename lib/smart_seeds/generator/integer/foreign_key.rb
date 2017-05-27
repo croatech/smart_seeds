@@ -1,35 +1,57 @@
 module SmartSeeds
   module Generator
     class ForeignKey < SmartSeeds::Generator::Integer
+      include ActiveSupport::Inflector
+
       def initialize(column, model)
         super
+        # byebug if column.name == 'category_id'
+        # byebug if column.name == 'category_id'
       end
 
       def generate_value
-        klass = convert_column_name.constantize
-        klass.ids.sample
+        klass = determine_klass
+
+        if klass.ids.empty?
+          raise ActiveRecord::ActiveRecordError,
+                "There are no records in #{camelized_model_name}. You have to to add those first. You can run SmartSeeds.plant(#{camelized_model_name})"
+        else
+          klass.ids.sample
+        end
       end
 
-      def is_a_foreign_key?
-        true if splitted_column_name.last == 'id'
+      def foreign_key?
+        true if associations_include_column?
       end
 
       private
 
-      def convert_column_name
-        # If a foreign key contains of two words splitted by dash like super_hero_id(SuperHero model)
-        if splitted_column_name.count > 2
-          # Pop the last element from an splitted array(_id)
-          arr = splitted_column_name.take(splitted_column_name.count - 1)
-          arr.map(&:capitalize).join
-        # Or it can be just a hero_id(Hero model)
+      def determine_klass
+        assocation = model_associations.select { |obj| obj.name == column_name_without_id.to_sym }
+
+        # if a class name didn't override in a model's class
+        if assocation.first.options.empty?
+          camelized_model_name
         else
-          splitted_column_name.first.capitalize
+          assocation.first.options[:class_name].constantize
         end
       end
 
-      def splitted_column_name
-        column.name.split('_')
+      def model_associations
+        model.reflect_on_all_associations(:belongs_to)
+      end
+
+      def column_name_without_id
+        column.name.sub(/^*_id/, '')
+      end
+
+      def associations_include_column?
+        model_associations.map(&:name).include?(column_name_without_id.to_sym)
+      end
+
+      def camelized_model_name
+        # converts underscore words like big_category to BigCategory constant
+        camelize(column_name_without_id).constantize
       end
     end
   end
