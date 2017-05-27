@@ -12,6 +12,7 @@ gemspec
 
 # To use a debugger
 group :development, :test do
+  gem 'bulk_insert'
   gem 'byebug'
   gem 'factory_girl'
   gem 'faker'

@@ -1,27 +1,35 @@
 module SmartSeeds
   class Performing
-    def initialize(model, attrs)
+    include ActiveSupport::Inflector
+
+    def initialize(model, attrs, size)
       @attrs = attrs
       @model = model
       @object = model.new
-      @skippable_attributes = %w(id created_at updated_at)
+      @size = size
+      @skippable_attributes = %w(id)
     end
 
     def start
-      add_skippable_attributes
-      set_default_values
+      model.bulk_insert(set_size: size) do |worker|
+        size.times do
+          add_skippable_attributes
+          set_default_values
 
-      # User can send custom values in a hash: SmartSeeds.plant(Entity, {name: 'Aleah'})
-      # This method overrides default values to custom('name' in the example above)
-      set_custom_values if attrs.any?
+          # User can send custom values in a hash: SmartSeeds.plant(Entity, {name: 'Aleah'})
+          # This method overrides default values to custom('name' in the example above)
+          set_custom_values if attrs.any?
 
-      object.save!
-      object
+          worker.add object.as_json
+        end
+      end
+
+      return "Done! #{size} #{model.name.downcase.pluralize(size)} was planted."
     end
 
     private
 
-    attr_reader :attrs, :model, :object, :skippable_attributes
+    attr_reader :attrs, :model, :object, :size, :skippable_attributes, :worker
 
     def add_skippable_attributes
       # All default attributes which defined in AR object should be skipped by default

@@ -1,4 +1,5 @@
 require 'faker'
+require 'bulk_insert'
 require 'smart_seeds/performing'
 require 'smart_seeds/generator/base'
 require 'smart_seeds/generator/binary'
@@ -16,7 +17,7 @@ require 'smart_seeds/generator/integer/foreign_key'
 require 'smart_seeds/generator/faker'
 
 module SmartSeeds
-  def self.plant(model, attrs={})
-    SmartSeeds::Performing.new(model, attrs).start
+  def self.plant(model, attrs={}, size=1)
+    SmartSeeds::Performing.new(model, attrs, size).start
   end
 end
