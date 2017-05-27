@@ -11,7 +11,7 @@ module SmartSeeds
       add_skippable_attributes
       set_default_values
 
-      # User can send custom values in a hash: SmartSeeds.(Entity, {name: 'Aleah'})
+      # User can send custom values in a hash: SmartSeeds.plant(Entity, {name: 'Aleah'})
       # This method overrides default values to custom('name' in the example above)
       set_custom_values if attrs.any?
 
