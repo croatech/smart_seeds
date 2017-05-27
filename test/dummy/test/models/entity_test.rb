@@ -23,7 +23,8 @@ class EntityTest < ActiveSupport::TestCase
   end
 
   test 'after seeding model shouldnt has fields with nil' do
-    entity = SmartSeeds.plant(Entity)
+    SmartSeeds.plant(Entity)
+    entity = Entity.last
     assert_not_nil entity.binary_data
     assert_not_nil entity.boolean_data
     assert_not_nil entity.date_data
@@ -37,7 +38,8 @@ class EntityTest < ActiveSupport::TestCase
   end
 
   test 'should override default attributes' do
-    entity = SmartSeeds.plant(Entity, {string_data:'custom data'})
+    SmartSeeds.plant(Entity, {string_data:'custom data'})
+    entity = Entity.last
     assert_equal entity.string_data, 'custom data'
   end
 end
