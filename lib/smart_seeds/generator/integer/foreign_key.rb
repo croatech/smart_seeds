@@ -12,7 +12,7 @@ module SmartSeeds
 
         if klass.ids.empty?
           raise ActiveRecord::ActiveRecordError,
-                "There are no records in #{camelized_model_name}. You have to to add those first. You can run SmartSeeds.plant(#{camelized_model_name})"
+                "There are no records in #{camelized_model_name}. You have to add those first. You can run SmartSeeds.plant(#{camelized_model_name})"
         else
           klass.ids.sample
         end
@@ -27,11 +27,11 @@ module SmartSeeds
       def determine_klass
         assocation = model_associations.select { |obj| obj.name == column_name_without_id.to_sym }
 
-        # if a class name didn't override in a model's class
-        if assocation.first.options.empty?
-          camelized_model_name
-        else
+        # if a class_name has been overrided in a model's class
+        if assocation.first.options.key? :class_name
           assocation.first.options[:class_name].constantize
+        else
+          camelized_model_name
         end
       end
 

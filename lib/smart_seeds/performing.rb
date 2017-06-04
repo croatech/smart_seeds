@@ -11,17 +11,14 @@ module SmartSeeds
     end
 
     def start
-      model.bulk_insert(set_size: size) do |worker|
-        size.times do
-          add_skippable_attributes
-          set_default_values
+      size.times do
+        add_skippable_attributes
+        set_default_values
 
-          # User can send custom values in a hash: SmartSeeds.plant(Entity, {name: 'Aleah'})
-          # This method overrides default values to custom('name' in the example above)
-          set_custom_values if attrs.any?
-
-          worker.add object.as_json
-        end
+        # User can send custom values in a hash: SmartSeeds.plant(Entity, {name: 'Aleah'})
+        # This method overrides default values to custom('name' in the example above)
+        set_custom_values if attrs.any?
+        object.save
       end
 
       return "Done! #{size} #{model.name.downcase.pluralize(size)} was planted."

@@ -18,9 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails"
   s.add_dependency "faker"
-  s.add_dependency "bulk_insert"
 
   s.add_development_dependency "sqlite3"
   s.add_development_dependency "faker"
-  s.add_development_dependency "bulk_insert"
 end
