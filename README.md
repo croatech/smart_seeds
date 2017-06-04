@@ -46,11 +46,18 @@ For example: Model `Superhero` has `name` and `power` attributes, so the value w
 
 ```
 
+### Size
+You can set a size and generate few records also
+`SmartSeeds.plant(Entity, {}, 1000)`
+```
+=> "Done! 1000 entities was/were planted."
+```
+
 ## Installation
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'smart_seeds', '~> 0.1.6'
+gem 'smart_seeds', '~> 0.1.7'
 ```
 
 And then execute:

@@ -21,7 +21,7 @@ module SmartSeeds
         object.save
       end
 
-      return "Done! #{size} #{model.name.downcase.pluralize(size)} was planted."
+      return "Done! #{size} #{model.name.downcase.pluralize(size)} was/were planted."
     end
 
     private
